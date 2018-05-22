@@ -123,7 +123,7 @@ class RainCloudy(object):
         """Show current linked controllers."""
         if hasattr(self, 'controllers'):
             if len(self.controllers) > MAX_ALLOWED_CONTROLLERS:
-                raise TypeError("Only %s controller per account."
+                raise TypeError("Only %s controllers per account."
                                 % MAX_ALLOWED_CONTROLLERS)
             return self.controllers[0]
         raise AttributeError("There is no controller assigned.")

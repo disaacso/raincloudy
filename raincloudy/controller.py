@@ -8,6 +8,8 @@ from raincloudy.const import (
 from raincloudy.helpers import (
     generate_soup_html, find_attr, find_controller_or_faucet_name)
 
+MAX_ALLOWED_CONTROLLERS = 2
+
 
 class RainCloudyController(object):
     """RainCloudy Controller object."""

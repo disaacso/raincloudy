@@ -5,7 +5,7 @@ import urllib3
 from raincloudy.const import (
     INITIAL_DATA, HEADERS, LOGIN_ENDPOINT, LOGOUT_ENDPOINT)
 from raincloudy.helpers import generate_soup_html, serial_finder
-from raincloudy.controller import RainCloudyController
+from raincloudy.controller import RainCloudyController, MAX_ALLOWED_CONTROLLERS
 
 
 class RainCloudy(object):
@@ -122,9 +122,9 @@ class RainCloudy(object):
     def controller(self):
         """Show current linked controllers."""
         if hasattr(self, 'controllers'):
-            if len(self.controllers) > 1:
-                # in the future, we should support more controllers
-                raise TypeError("Only one controller per account.")
+            if len(self.controllers) > MAX_ALLOWED_CONTROLLERS:
+                raise TypeError("Only %s controller per account."
+                                % MAX_ALLOWED_CONTROLLERS)
             return self.controllers[0]
         raise AttributeError("There is no controller assigned.")
 
